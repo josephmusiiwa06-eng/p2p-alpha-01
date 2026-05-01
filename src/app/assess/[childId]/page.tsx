@@ -28,7 +28,7 @@ export default function AssessChildPage() {
   const [error, setError] = useState('')
 
   const load = useCallback(async () => {
-    if (!childId) return
+    if (!childId || Array.isArray(childId)) return
     const sb = createClient()
     const { data: { user } } = await sb.auth.getUser()
     if (!user) {

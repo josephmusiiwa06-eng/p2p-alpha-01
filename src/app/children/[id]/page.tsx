@@ -17,7 +17,7 @@ export default function ChildProfilePage() {
   const [loading, setLoading] = useState(true)
 
   const load = useCallback(async () => {
-    if (!childId) return
+    if (!childId || Array.isArray(childId)) return
     const sb = createClient()
     const { data: { user } } = await sb.auth.getUser()
     if (!user) {

@@ -12,7 +12,7 @@ export default function ReportPage() {
   const [error, setError] = useState('')
 
   const load = useCallback(async () => {
-    if (!token) return
+    if (!token || Array.isArray(token)) return
     try {
       const data = await getReportByToken(token)
       setReport(data)
